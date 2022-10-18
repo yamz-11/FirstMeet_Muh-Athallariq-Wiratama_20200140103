@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -27,10 +28,13 @@ public class TokoJpaController implements Serializable {
     public TokoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = null;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("cemilan_koneksidb_jar_0.0.1-SNAPSHOTPU");
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
+    }
+
+    public TokoJpaController() {
     }
 
     public void create(Toko toko) throws IllegalOrphanException, PreexistingEntityException, Exception {
